@@ -44,7 +44,7 @@ function App (props) {
 
   var sendBase64ToServer = function(base64){
     var httpPost = new XMLHttpRequest(),
-        path = "https://182b-138-195-46-124.ngrok.io/send/",
+        path = "https://0eb8-138-195-46-124.ngrok.io/send/",
         data = JSON.stringify({image: base64});
     httpPost.onreadystatechange = function(err) {
       console.log("sent")
