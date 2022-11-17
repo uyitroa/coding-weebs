@@ -41,7 +41,7 @@ function blobToDataURL(blob, callback) {
 
 function App (props) {
   const [dataUri, setDataUri] = useState('');
-  const [checked, setChecked] = React.useState(true);
+  const [checked, setChecked] = React.useState(false);
 
   function sendBase64ToServer(base64){
 
