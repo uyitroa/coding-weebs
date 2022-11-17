@@ -41,10 +41,19 @@ function blobToDataURL(blob, callback) {
 
 function App (props) {
   const [dataUri, setDataUri] = useState('');
+  const [checked, setChecked] = React.useState(true);
 
-  var sendBase64ToServer = function(base64){
+  function sendBase64ToServer(base64){
+
+    var subpath = "send/"
+
+    if (checked) {
+      subpath = "send_checkfruit/";
+    }
+
     var httpPost = new XMLHttpRequest(),
-        path = "https://0eb8-138-195-46-124.ngrok.io/send/",
+
+        path = "https://0eb8-138-195-46-124.ngrok.io/" + subpath,
         data = JSON.stringify({image: base64});
     httpPost.onreadystatechange = function(err) {
       console.log("sent")
@@ -120,6 +129,11 @@ function App (props) {
     )
   }
 
+  function handleChange() {
+
+    setChecked(!checked);
+  }
+
 
   const isFullscreen = false;
   return (
@@ -137,6 +151,15 @@ function App (props) {
                 />
 
                 <FileUploadPage />
+
+                <label>
+                  <input
+                      type="checkbox"
+                      checked={checked}
+                      onChange={handleChange}
+                  />
+                  Check fruit
+                </label>
               </div>
         }
       </div>
