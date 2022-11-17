@@ -30,6 +30,13 @@ function dataURItoBlob(dataURI) {
 
 }
 
+function blobToDataURL(blob, callback) {
+  var a = new FileReader();
+  a.onload = function(e) {callback(e.target.result);}
+  a.readAsDataURL(blob);
+}
+
+
 
 
 function App (props) {
@@ -73,6 +80,46 @@ function App (props) {
     );
   }
 
+  async function handleTakePhotoBlob(blob) {
+    console.log("hello")
+    Compress.imageFileResizer(
+        blob, // the file from input
+        480, // width
+        480, // height
+        "JPEG", // compress format WEBP, JPEG, PNG
+        70, // quality
+        0, // rotation
+        (uri) => {
+          sendBase64ToServer(uri)
+          // You upload logic goes here
+        },
+        "base64" // blob or base64 default base64
+    );
+  }
+
+  function FileUploadPage(){
+    const [selectedFile, setSelectedFile] = useState();
+    const [isFilePicked, setIsFilePicked] = useState(false);
+
+    const changeHandler = (event) => {
+      setSelectedFile(event.target.files[0]);
+      setIsFilePicked(true);
+    };
+
+    const handleSubmission = () => {
+      handleTakePhotoBlob(selectedFile);
+    }
+
+    return(
+        <div>
+          <input type="file" name="file" onChange={changeHandler} />
+          <div>
+            <button onClick={handleSubmission}>Submit</button>
+          </div>
+        </div>
+    )
+  }
+
 
   const isFullscreen = false;
   return (
@@ -82,10 +129,15 @@ function App (props) {
               ? <ImagePreview dataUri={dataUri}
                               isFullscreen={isFullscreen}
               />
-              : <Camera onTakePhotoAnimationDone = {handleTakePhoto}
-                        isFullscreen={isFullscreen}
-                        idealFacingMode={FACING_MODES.ENVIRONMENT}
-              />
+              :
+              <div>
+                <Camera onTakePhotoAnimationDone = {handleTakePhoto}
+                         isFullscreen={isFullscreen}
+                         idealFacingMode={FACING_MODES.ENVIRONMENT}
+                />
+
+                <FileUploadPage />
+              </div>
         }
       </div>
   );
