@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/coding-weebs/static/css/main.84b58c5a.css",
-    "main.js": "/coding-weebs/static/js/main.8110f556.js",
+    "main.js": "/coding-weebs/static/js/main.4c9bb828.js",
     "static/js/787.45496f00.chunk.js": "/coding-weebs/static/js/787.45496f00.chunk.js",
     "index.html": "/coding-weebs/index.html",
     "main.84b58c5a.css.map": "/coding-weebs/static/css/main.84b58c5a.css.map",
-    "main.8110f556.js.map": "/coding-weebs/static/js/main.8110f556.js.map",
+    "main.4c9bb828.js.map": "/coding-weebs/static/js/main.4c9bb828.js.map",
     "787.45496f00.chunk.js.map": "/coding-weebs/static/js/787.45496f00.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.84b58c5a.css",
-    "static/js/main.8110f556.js"
+    "static/js/main.4c9bb828.js"
   ]
 }
