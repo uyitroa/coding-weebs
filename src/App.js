@@ -42,19 +42,12 @@ function blobToDataURL(blob, callback) {
 function App (props) {
   const [dataUri, setDataUri] = useState('');
   const [checked, setChecked] = React.useState(false);
+  const [checkedRotten, setCheckedRotten] = React.useState(true);
 
   function sendBase64ToServer(base64){
-
-    var subpath = "send/"
-
-    if (checked) {
-      subpath = "send_checkfruit/";
-    }
-
     var httpPost = new XMLHttpRequest(),
-
-        path = "https://02aa-2a0c-b641-2f1-0-f816-3eff-fe27-25f6.eu.ngrok.io/" + subpath,
-        data = JSON.stringify({image: base64});
+        path = "https://02aa-2a0c-b641-2f1-0-f816-3eff-fe27-25f6.eu.ngrok.io/send_checkfruit/",
+        data = JSON.stringify({image: base64, checkfruit: checked, checkrotten: checkedRotten});
     httpPost.onreadystatechange = function(err) {
       console.log("sent")
       if (httpPost.readyState == 4 && (httpPost.status == 200 || httpPost.status == 301)) {
@@ -134,6 +127,11 @@ function App (props) {
     setChecked(!checked);
   }
 
+  function handleChangeRotten() {
+
+    setCheckedRotten(!checkedRotten);
+  }
+
 
   const isFullscreen = false;
   return (
@@ -159,6 +157,15 @@ function App (props) {
                       onChange={handleChange}
                   />
                   Check fruit
+                </label>
+
+                <label>
+                  <input
+                      type="checkbox"
+                      checked={checkedRotten}
+                      onChange={handleChangeRotten}
+                  />
+                  Check rotten
                 </label>
               </div>
         }
