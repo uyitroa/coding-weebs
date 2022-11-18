@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import Camera, { FACING_MODES, IMAGE_TYPES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import ImagePreview from './ImagePreview';
@@ -43,6 +44,11 @@ function App (props) {
   const [dataUri, setDataUri] = useState('');
   const [checked, setChecked] = React.useState(false);
   const [checkedRotten, setCheckedRotten] = React.useState(true);
+
+  useEffect(() => {
+    document.title = 'Fruit Recognition';
+  }, []);
+
 
   function sendBase64ToServer(base64){
     var httpPost = new XMLHttpRequest(),
