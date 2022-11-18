@@ -143,6 +143,7 @@ function App (props) {
               />
               :
               <div>
+	        <img width={"150"} src={"https://raw.githubusercontent.com/uyitroa/coding-weebs/master/logo.png"}/>
                 <Camera onTakePhotoAnimationDone = {handleTakePhoto}
                          isFullscreen={isFullscreen}
                          idealFacingMode={FACING_MODES.ENVIRONMENT}
