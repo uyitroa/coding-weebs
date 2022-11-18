@@ -53,7 +53,7 @@ function App (props) {
 
     var httpPost = new XMLHttpRequest(),
 
-        path = "https://441f-2a0c-b641-2f1-0-f816-3eff-fe27-25f6.eu.ngrok.io/" + subpath,
+        path = "https://02aa-2a0c-b641-2f1-0-f816-3eff-fe27-25f6.eu.ngrok.io/" + subpath,
         data = JSON.stringify({image: base64});
     httpPost.onreadystatechange = function(err) {
       console.log("sent")
